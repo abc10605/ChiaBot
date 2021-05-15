@@ -1,6 +1,4 @@
 import abc
-import datetime
-import logging
 
 from telegram import Bot
 from telegram.ext import Filters, MessageHandler, Updater
@@ -21,10 +19,6 @@ class Telebot(abc.ABC):
         self.starting_message()
         self.updater.start_polling()
         self.updater.idle()
-        
-    @abc.abstractmethod
-    def starting_message(self):
-        return NotImplemented
     
     @abc.abstractmethod
     def add_handler(self):
@@ -32,6 +26,10 @@ class Telebot(abc.ABC):
     
     @abc.abstractmethod
     def add_reply_markup(self):
+        return NotImplemented
+    
+    @abc.abstractmethod
+    def starting_message(self):
         return NotImplemented
     
     @abc.abstractmethod
@@ -45,6 +43,7 @@ class Telebot(abc.ABC):
     @abc.abstractmethod
     def error_handler(self):
         return NotImplemented
+    
     @abc.abstractmethod
     def reply_to_text(self):
         return NotImplemented
